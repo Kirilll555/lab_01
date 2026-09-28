@@ -27,3 +27,12 @@ def test_err():
 def test_zero():
     with pytest.raises(ConverterError):
         convert(-300, "c", "f")
+
+def test_uppercase():
+    assert convert(1000, "MM", "M") == 1.0
+
+def test_mixed():
+    assert convert(0, "C", "F") == 32.0
+
+def test_lower_and_upper():
+    assert convert(1, "Km", "M") == 1000.0
