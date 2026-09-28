@@ -1,4 +1,7 @@
-from errors import CalculatorError
+try:
+    from .errors import CalculatorError
+except ImportError:
+    from errors import CalculatorError
 
 def tokenize(inp):
     tokens = []

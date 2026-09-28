@@ -1,4 +1,7 @@
-from errors import ConverterError
+try:
+    from .errors import ConverterError
+except ImportError:
+    from errors import ConverterError
 
 units = {
     'mm': ('length', 0.001, 0),
