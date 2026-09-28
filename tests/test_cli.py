@@ -7,6 +7,7 @@ def run(args):
         [sys.executable, "-m", "toolkit", *args],
         capture_output=True,
         text=True,
+        check=False
     )
 
 

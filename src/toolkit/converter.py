@@ -28,7 +28,7 @@ def validate(unit_1, unit_2):
     return s1, x1, b1, s2, x2, b2
 
 def convert(value, unit_1, unit_2):
-    s1, x1, b1, s2, x2, b2 = validate(unit_1, unit_2)
+    s1, x1, b1, _, x2, b2 = validate(unit_1, unit_2)
     result = (value + b1) * x1
     if s1 == 'temp' and result < -273.15:
         raise ConverterError('Результат ниже абсолютного нуля')
