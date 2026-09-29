@@ -3,6 +3,7 @@ try:
 except ImportError:
     from errors import CalculatorError
 
+s = ['+', '-', '*', '/']
 def tokenize(inp):
     tokens = []
     i = 0
@@ -26,18 +27,18 @@ def validate(tokens):
     if len(tokens) == 0:
         raise CalculatorError('Введено пустое выражение')
     for token in tokens:
-        if token in ['+', '-', '*', '/']:
+        if token in s:
             continue
         try:
             float(token)
         except ValueError:
             raise CalculatorError('Введен недопустимый токен')
-    if tokens[0] in ['+', '-', '*', '/']:
+    if tokens[0] in s:
         raise CalculatorError('Бинарная операция введена в начале выражения')
     for i in range(len(tokens) - 1):
-        if tokens[i] in ['+', '-', '*', '/'] and tokens[i + 1] in ['+', '-', '*', '/']:
+        if tokens[i] in s and tokens[i + 1] in s:
             raise CalculatorError('Введено две операции подряд')
-    if tokens[-1] in ['+', '-', '*', '/']:
+    if tokens[-1] in s:
         raise CalculatorError('Бинарная операция введена в конце выражения')
     for i in range(len(tokens) - 1):
         if tokens[i] == '/' and float(tokens[i + 1]) == 0.0:
@@ -50,7 +51,7 @@ def calculate(inp):
     i = 0
     while i < len(tokens):
         if tokens[i] in ['+', '-']:
-            if i == 0 or tokens[i-1] in ['+', '-', '*', '/']:
+            if i == 0 or tokens[i-1] in s:
                 if tokens[i] == '-':
                     tokens[i+1] = '-' + tokens[i+1]
                     tokens.pop(i)
