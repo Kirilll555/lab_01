@@ -32,7 +32,7 @@ def test_uppercase():
     assert convert(1000, "MM", "M") == 1.0
 
 def test_mixed():
-    assert convert(0, "C", "F") == 32.0
+    assert convert(0, "C", "f") == 32.0
 
 def test_lower_and_upper():
     assert convert(1, "Km", "M") == 1000.0
